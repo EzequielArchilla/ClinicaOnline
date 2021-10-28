@@ -1,0 +1,109 @@
+<body>
+    <div class="body"></div>
+    <div class="form_wrapper">
+        <button class="buttonCustom buttonCustomPos" (click)="goToHome()">X</button>
+        <div class="form_container">
+            <div class="title_container">
+                <h2>Registro</h2>
+            </div>
+            <div class="row clearfix">
+                <div class="">
+                    <div *ngIf="tipo == ''" class="containerFlex">
+                        <button class="buttonCustom" (click)="this.tipo = 'paciente'">Paciente</button>
+                        <button class="buttonCustom" (click)="this.tipo = 'especialista'">Especialista</button>
+                    </div>
+
+
+                    <form *ngIf="tipo == 'paciente'" [formGroup]="formularioPaciente" (ngSubmit)="registrarUsuario()">
+                        <div class="input_field">
+                            <input type="email" name="email" placeholder="Email" formControlName="mail" />
+                        </div>
+                        <div class="input_field">
+                            <input type="password" name="password" placeholder="Contraseña"
+                                formControlName="password" />
+                        </div>
+                        <div class="input_field">
+                            <input type="text" name="nombre" placeholder="Nombre" formControlName="nombre" />
+                        </div>
+                        <div class="input_field">
+                            <input type="text" name="apellido" placeholder="Apellido" formControlName="apellido" />
+                        </div>
+                        <div class="input_field">
+                            <input type="number" name="edad" placeholder="Edad" formControlName="edad" />
+                        </div>
+                        <div class="input_field">
+                            <input type="number" name="dni" placeholder="Dni" formControlName="dni" />
+                        </div>
+                        <div class="input_field select_option">
+                            <label>Obra social</label>
+                            <select formControlName="obraSocial">
+                                <option>OSDE</option>
+                                <option>Hominis</option>
+                                <option>Swiss Medical</option>
+                                <option>Galeno</option>
+                                <option>OSECAC</option>
+                            </select>
+                            <div class="select_arrow"></div>
+                        </div>
+                        <div class="input_field">
+                            <label class="label label-primary">Imagen 1</label>
+                            <input type="file" name="imagen" formControlName="imagen1" (change)="onFile1Change($event)"
+                                accept="*.png.jpg" />
+                        </div>
+                        <div class="input_field">
+                            <label class="label label-primary">Imagen 2</label>
+                            <input type="file" name="imagen" formControlName="imagen2" (change)="onFile2Change($event)"
+                                accept="*.png.jpg" />
+                        </div>
+
+                        <input class="button" type="submit" value="Register" />
+                    </form>
+
+
+                    <form *ngIf="tipo == 'especialista'" [formGroup]="formularioEspecialista"
+                        (ngSubmit)="registrarUsuario()">
+                        <div class="input_field">
+                            <input type="email" name="email" placeholder="Email" formControlName="mail" />
+                        </div>
+                        <div class="input_field">
+                            <input type="password" name="password" placeholder="Contraseña"
+                                formControlName="password" />
+                        </div>
+                        <div class="input_field">
+                            <input type="text" name="nombre" placeholder="Nombre" formControlName="nombre" />
+                        </div>
+                        <div class="input_field">
+                            <input type="text" name="apellido" placeholder="Apellido" formControlName="apellido" />
+                        </div>
+                        <div class="input_field">
+                            <input type="number" name="edad" placeholder="Edad" formControlName="edad" />
+                        </div>
+                        <div class="input_field">
+                            <input type="number" name="dni" placeholder="Dni" formControlName="dni" />
+                        </div>
+
+                        <div class="container">
+                            <div class="input_field select_option">
+                                <label>Especialidad</label>
+                                <select formControlName="especialidad">
+                                    <option *ngFor="let especialidad of listaEspecialidades"
+                                        value="especialidad.titulo">{{especialidad.titulo}}</option>
+                                </select>
+                                <div class="select_arrow"></div>
+                                <div class="add_sign"></div>
+                            </div>
+                        </div>
+                        <div class="input_field">
+                            <label class="label label-primary">Imagen de
+                                perfil</label>
+                            <input type="file" name="imagen" formControlName="imagen1" (change)="onFile1Change($event)"
+                                accept="*.png.jpg" />
+                        </div>
+
+                        <input class="button" type="submit" value="Register" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

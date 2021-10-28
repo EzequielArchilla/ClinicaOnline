@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<app-barra-de-navegacion></app-barra-de-navegacion>
+
+<body>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2><b>Administracion de Usuarios</b></h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary" (click)="mostrarFormularioAlta()">
+                                Registrar Usuario
+                            </button>
+                            <button class="btn btn-info" (click)="filtrarUsuarios('paciente')">Pacientes</button>
+                            <button class="btn btn-info"
+                                (click)="filtrarUsuarios('especialista')">Especialistas</button>
+                            <button class="btn btn-info"
+                                (click)="filtrarUsuarios('administrador')">Administradores</button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="selectAll">
+                                    <label for="selectAll"></label>
+                                </span>
+                            </th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Edad</th>
+                            <th>Dni</th>
+                            <th *ngIf="tipoMostrado == 'especialista'">Validado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of listaUsuarios; index as i">
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+                            <td>{{usuario.mail}}</td>
+                            <td>{{usuario.edad}}</td>
+                            <td>{{usuario.dni}}</td>
+                            <div *ngIf="tipoMostrado == 'especialista'">
+                                <td>{{usuario.validado}}</td>
+                                <td>
+                                    <button class="edit" (click)="cambiarValor(i, usuario.validado)">Change</button>
+                                </td>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-formulario-registro [formularioOculto]="formularioOculto"></app-formulario-registro>
+</body>

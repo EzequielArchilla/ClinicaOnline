@@ -1,0 +1,15 @@
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div>Clinica<span> UTN</span></div>
+</div>
+<br>
+<form [formGroup]="formularioLogueo" (ngSubmit)="loguearUsuario()">
+    <div class="login">
+        <input type="text" placeholder="email" name="email" formControlName="email"><br>
+        <input type="password" placeholder="password" name="password" formControlName="password">
+        <label hidden>{{error}}</label>
+        <input type="submit" value="Ingresar" [disabled]="formularioLogueo.invalid" />
+        <input type="button" value="Ingreso rapido" (click)="ingresoRapido()" />
+    </div>
+</form>

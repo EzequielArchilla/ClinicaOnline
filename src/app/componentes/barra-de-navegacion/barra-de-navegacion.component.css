@@ -1,0 +1,106 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+    height: 80px;
+    transition: all 0.5s;
+    z-index: 997;
+    transition: all 0.5s;
+    background: #2d6760;
+  }
+  #header.header-scrolled {
+    background: #1d443f;
+    height: 60px;
+  }
+  #header .logo h1 {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  #header .logo h1 a, #header .logo h1 a:hover {
+    color: #fff;
+    text-decoration: none;
+    line-height: 0;
+  }
+  #header .logo img {
+    padding: 0;
+    margin: 0;
+    max-height: 40px;
+  }
+  
+  #main {
+    margin-top: 80px;
+  }
+  
+  .botonLogin{
+    align-items: center;
+    margin: 2px;
+    background-color: #368d83;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .botonLogin:focus {
+    color: #171e29;
+  }
+  
+  .botonLogin:hover {
+    background-color: rgb(38, 184, 116);
+    border-color: rgb(38, 184, 116);
+    fill: rgb(38, 184, 116);
+  }
+  
+  .botonLogin:active {
+    background-color: rgb(38, 184, 116);
+    border-color: rgb(38, 184, 116);
+    fill: rgb(38, 184, 116);
+  }
+  
+  @media (min-width: 768px) {
+    .botonLogin {
+      min-width: 170px;
+    }
+  }
+
+  
+  .labelUsuario {
+    align-items: center;
+    margin: 2px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: inline-flex;
+    font-family: Inter,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+  }

@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- Edit Modal HTML -->
+<div [style.visibility]="formularioOculto" class="container">
+    <h2>Nuevo usuario</h2>
+    <form [formGroup]="formulario" (ngSubmit)="registrarUsuario()">
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" formControlName="mail" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Contraseña"
+                formControlName="password" />
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre" formControlName="nombre" />
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="apellido" placeholder="Apellido" formControlName="apellido" />
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="edad" placeholder="Edad" formControlName="edad" />
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="dni" placeholder="Dni" formControlName="dni" />
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="rd1" value="administrador" (ngModelChange)="cambioTipo()"
+                formControlName="tipo">
+            <label class="form-check-label" for="exampleRadios1">
+                Administrador
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="rd2" value="especialista" (ngModelChange)="cambioTipo()"
+                formControlName="tipo">
+            <label class="form-check-label" for="exampleRadios2">
+                Especialista
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="rd3" value="paciente" (ngModelChange)="cambioTipo()"
+                formControlName="tipo">
+            <label class="form-check-label" for="exampleRadios3">
+                Paciente
+            </label>
+        </div>
+        <br>
+        <div class="form-group padding" *ngIf="tipo == 'paciente'">
+            <div class="form-check">
+                <label class="form-check-label">Obra social</label>
+                <select class="custom-select select" size="3">
+                    <option value="osde">Osde</option>
+                    <option value="swiss medical">Swiss medical</option>
+                    <option value="hominis">Hominis</option>
+                </select>
+            </div><br>
+            <div class="form-check">
+                <label class="custom-file-label">Imagen 1</label>
+                <input type="file" name="imagen" class="custom-file-input" formControlName="imagen1" />
+            </div><br>
+            <div class="form-check">
+                <label class="custom-file-label">Imagen 2</label>
+                <input type="file" name="imagen" class="custom-file-input" formControlName="imagen2" />
+            </div><br>
+        </div>
+
+        <div *ngIf="tipo == 'especialista'">
+            <select class="custom-select">
+                <option selected>Seleccionar especialidad</option>
+                <option *ngFor="let especialidad of listaEspecialidades"></option>
+            </select><br>
+            <div class="form-check">
+                <label class="custom-file-label">Imagen de perfil</label>
+                <input type="file" class="custom-file-input" name="imagen" formControlName="imagen1" />
+            </div><br>
+        </div>
+
+
+        <input class="button" type="submit" value="Register" (click)="this.formularioOculto = 'hidden'" />
+    </form>
+</div>
